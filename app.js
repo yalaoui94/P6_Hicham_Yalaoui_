@@ -11,7 +11,8 @@ const { dirname } = require('path');
 /**********************************/ 
 // connexion à la base de Données//
 
-mongoose.connect('mongodb+srv://Hicham59640:Hicham94@cluster0.wwzpo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(
+  process.env.DB_CONNECTION,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
