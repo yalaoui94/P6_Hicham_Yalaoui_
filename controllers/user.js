@@ -1,7 +1,7 @@
 // importation bcrypt pour le hash du mot de passe
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+
 
 // importation du models
 const User = require('../models/user');
@@ -17,7 +17,7 @@ exports.signup = (req, res, next) => {
             })
             user.save()
                 .then(() => res.status(201).json({message: 'utilisateur créé !' }))
-                .catch(error => res.status(400).json({ error }));
+                .catch(error => res.status(500).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));
 };
@@ -42,11 +42,11 @@ exports.login = (req, res, next) => {
                         token: jwt.sign(
                             { userId: user._id },
                             process.env.RANDOM_SECRET_KEY,
-                            { expiresIn: '24h' }
+                            { expiresIn: '1h' }
                         )
                     });
                 })
-                .catch(error => res.status(501).json({ error }));
+                .catch(error => res.status(500).json({ error }));
         })
-        .catch(error => res.status(502).json({ error }));
+        .catch(error => res.status(500).json({ error }));
 };
