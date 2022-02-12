@@ -1,9 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const dotenv = require("dotenv");
-dotenv.config();
-
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const { dirname } = require('path');
@@ -34,6 +31,8 @@ app.use((req, res, next) => {
 // remplace body parser
 
 app.use(express.json());
+//*** express.json middleware****//
+
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
