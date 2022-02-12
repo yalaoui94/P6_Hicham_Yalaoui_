@@ -5,7 +5,7 @@ const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const { dirname } = require('path');
 
-/**********************************/ 
+/***********************************/ 
 // connexion à la base de Données//
 
 mongoose.connect(
