@@ -1,9 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const path = require('path');
-const saucesRoutes = require('./routes/sauces');
-const userRoutes = require('./routes/user');
-const { dirname } = require('path');
+const express = require('express');// importation d'express
+const mongoose = require('mongoose'); // importation de mongoose 
+const path = require('path'); // Importation de node qui nous donne le chemain 
+const saucesRoutes = require('./routes/sauces'); //importation de sauceRoutes 
+const userRoutes = require('./routes/user'); //importation de userRoutes
+
 
 /***********************************/ 
 // connexion à la base de Données//
@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 //*** express.json middleware****//
-
+// les routes attendu par le front//
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);

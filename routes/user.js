@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const userCtrl = require('../controllers/user');
+const express = require('express'); // importation d'express
+const router = express.Router(); // importation du rooter
+const userCtrl = require('../controllers/user'); // importation du userCrtl
 
-const password = require('../middleware/password')
+const password = require('../middleware/password') // importation du password
 
 
 router.post('/signup', password, userCtrl.signup);

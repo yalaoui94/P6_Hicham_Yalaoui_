@@ -4,7 +4,7 @@ const fs = require('fs');// supprimer les images //
 
 // --------- CRÉER/ENREGISTRER UNE SAUCE ----------
 exports.createSauce = (req, res, next) => {
-    const sauceObject = JSON.parse(req.body.sauce)
+    const sauceObject = JSON.parse(req.body.sauce) // Extraire l'objet json
     delete sauceObject._id;
     const sauce = new Sauce({
       ...sauceObject,
@@ -20,7 +20,7 @@ exports.createSauce = (req, res, next) => {
 exports.modifySauce = (req, res, next) => {
     const sauceObject = req.file ?
         {
-            ...JSON.parse(req.body.sauce),
+            ...JSON.parse(req.body.sauce), // récuperer les informations 
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         } : { ...req.body};
     Sauce.updateOne({ _id: req.params.id, userId: req.auth.userId}, { ...sauceObject, _id: req.params.id })

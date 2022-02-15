@@ -1,5 +1,7 @@
 // importation bcrypt pour le hash du mot de passe
 const bcrypt = require('bcrypt');
+
+//importation du package jsonwebtoken qui va nous créer un token et de le vérifier // 
 const jwt = require('jsonwebtoken');
 
 
@@ -30,8 +32,7 @@ exports.login = (req, res, next) => {
             if (!user){
                 return res.status(401).json({ error: 'utilisateur non trouvé !' });
             }
-            console.log(req.body);
-            console.log(user);
+            
             bcrypt.compare(req.body.password, user.password)
                 .then(valid => {
                     if (!valid) {
